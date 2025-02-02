@@ -7,6 +7,7 @@ const PORT =8000;
 
 // const upload = multer({ dest: 'uploads/' }) //middleware which will save our uploaded files in uploads/ folder
 
+
 const storage = multer.diskStorage({
   destination: function(req,file,cb){
     return cb(null,"./uploads");
@@ -30,7 +31,7 @@ app.get("/",(req,res)=>{
   return res.render("homepage");
 });
 
-app.post("/upload",upload.single("profileImage"), (req,res)=>{ //we can also upload multiple images
+app.post("/upload",upload.single("profileImage"), (req,res)=>{ //we can also upload multiple images using multi
   console.log(req.body);
   console.log(req.file);
   return res.redirect("/")
